@@ -1,0 +1,11 @@
+The Astropy Project: A community Python library for astronomy
+
+The Astropy Project is a community effort to develop a single core package
+for Astronomy in Python and foster interoperability between Python Astronomy
+packages, and is one of the largest open-source collaborations in
+Astronomy. We present an overview of the project, provide an update on the
+latest status of the core package, which saw the v1.2 release this June, and
+discuss our plans for the coming year. We describe the "affiliated
+packages": Python packages that use Astropy and are associated with the
+project, but are not actually a part of the core library itself. We also
+highlight the infrastructural tools we provide for these packages.
