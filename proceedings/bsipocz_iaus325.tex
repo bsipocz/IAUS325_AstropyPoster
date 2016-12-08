@@ -42,8 +42,183 @@ packages.
 
 \firstsection % if your document starts with a section,
               % remove some space above using this command.
-\section{Introduction}
 
-\section{Overview}
+\section{The astropy project}
+
+Python and improve usability, foster interoperability, and collaboration
+between Python astronomy packages.
+
+The core astropy package contains functionality aimed at professional
+astronomers and astrophysicists, but can be useful to anyone developing
+astronomy software. The Astropy Project also includes affiliated packages,
+Python packages that are not necessarily developed by the core development
+team, but share the goals of Astropy, and often build from the core
+package's code and infrastructure.
+
+\section{astropy core functionality}
+
+\begin{itemize}
+  \item Astronomy computations and utilities
+  \begin{itemize}
+    \item \textsc{\texttt{astropy.cosmology}}\\
+      Contains classes for representing cosmologies, and utility functions for
+      calculating commonly used quantities that depend on a cosmological model
+      including distances, ages and lookback times corresponding to a measured
+      redshift or the transverse separation corresponding to a measured angular
+      separation.
+    \item \textsc{\texttt{astropy.convolution}}\\
+      Provides convolution functions and kernels that offers improvements compared
+      to the scipy.ndimage routines
+    \item \textsc{\texttt{astropy.stats}}\\
+      Holds statistical functions and algorithms frequently used in astronomy,
+      some of which are more specialized than one would find in scipy.stats.
+    \item \textsc{\texttt{astropy.visualization}}\\
+      Provides functionality that can be helpful when visualizing data. At the
+      moment, functionality include enhanced histograms, image normalizing
+      (including both scaling and stretching), and custom plotting styles for
+      matplotlib.
+  \end{itemize}
+  \item Core data structures and transformations
+  \begin{itemize}
+    \item \textsc{\texttt{astropy.units}}\\
+      Handles defining, and converting between, and performing arithmetic with
+      physical quantities (using a powerful Quantity class). It also handles
+      logarithmic units such as magnitude and decibel.
+    \item \textsc{\texttt{astropy.constants}}\\
+      Contains a number of physical constants useful in astronomy and
+      physics. Constants are represented as Quantity objects with additional
+      metadata describing their provenance and uncertainties.
+    \item \textsc{\texttt{astropy.nddata}}\\
+      Provides an NDData class for managing n-dimensional datasets with support
+      for attached metadata, errors, and masking.
+    \item \textsc{\texttt{astropy.time}}\\
+      Provides functionality for manipulating times and dates. Specific emphasis
+      is placed on supporting time scales (e.g. UTC, TAI, UT1) and time
+      representations (e.g. JD, MJD, ISO 8601) that are used in astronomy. Wraps
+      the ERFA library of time and calendar routines, which is a fork of SOFA
+      released under a less restrictive license.
+    \item \textsc{\texttt{astropy.coordinates}}\\
+      Provides classes for representing celestial/spatial coordinates and
+      transformation functions for converting between standard systems in a
+      uniform way.
+    \item \textsc{\texttt{astropy.wcs}}\\
+      Contains utilities for managing WCS transformations in FITS files. These
+      transformations map the pixel locations in an image to their real-world
+      units.
+    \item \textsc{\texttt{astropy.modeling}}\\
+      Provides a framework for representing models, performing model evaluation,
+      and fitting. It supports 1D and 2D models and fitting with parameter
+      constraints, as well as an easy to use API for defining new models and
+      fitting algorithms.
+    \item \textsc{\texttt{astropy.table}}\\
+      Provides a powerful Table class for storing and manipulating heterogeneous
+      tables of data in a way that is familiar to Numpy users, though with more
+      flexibility than the data structures built into Numpy including support for
+      metadata and masking.
+  \end{itemize}
+  \item Files and I/O
+  \begin{itemize}
+    \item \textsc{\texttt{astropy.io.fits}}\\
+      Reading and writing FITS files including support for many non-standard FITS
+      conventions.
+    \item \textsc{\texttt{astropy.io.ascii}}\\
+      Reading from and writing a wide range of plain text formats to and from
+      Astropy Table objects.
+    \item \textsc{\texttt{astropy.io.votable}}\\
+      Validating, and reading and writing the IVOA VOTable format to and from
+      Astropy Table objects.
+  \end{itemize}
+\end{itemize}
+
+\section{Community}
+
+The astropy project is made possible through the efforts of members of the
+astronomy community. Over 160 individuals (including students, postdocs,
+staff, and faculty) contributed to the core package as of the 1.2
+release. astropy mentored 19 Google Summer of Code students over the last 4
+years. The whole astropy project is overseen by the coordination committee.
+
+\subsection{Contribution cycle}
+
+astropy’s entire development process is hosted on GitHub. This enables the
+contributors, most of whom have never met each other, to work together in
+the best collaborative way. In addition to the source code repository,
+GitHub provides a public issue tracker and other project management tools.
+
+Code contributions are submitted via “pull requests (PR)” and should be
+include unit tests and documentation. PRs are reviewed by at least one of
+the maintainers of the package. Using continuous integration (CI) all PRs
+are thoroughly tested on multiple platforms and with different versions of
+Python and NumPy. Once the review process is finished and all tests pass,
+PRs are merged and get included in the next appropriate release.
+
+
+\section{Release cycle}
+
+astropy has feature releases every 6 month, and between feature releases
+additional bugfix releases that contain only bugfixes but no new
+features. The current latest release is v1.2.1.  Long-term support (LTS)
+releases continue to receive bugfixes for 2 years with no changes to the
+API. They are ideal for pipelines and other applications where API stability
+is essential. The latest LTS version is v1.0.10.  Package template astropy
+provides a template package that any Python package is welcome to use (many
+affiliated packages do so).  The template contains a ready-to-go package
+layout. It provides infrastructure such as documentation tools, testing
+framework and CI templates, configurations, Cython integration and
+documentation on how to make it all work.
+
+
+\section{Affiliated packages}
+
+Affiliated packages contain functionality that is more specialized, or have
+license incompatibility, or have enough external dependencies (e.g. GUI
+libraries) that limit their integration possibility into the core and thus
+they are more suitable to be separate packages. In general we hope that
+becoming an affiliated package is seen as a good way for new and existing
+packages to gain exposure.
+
+
+\subsection{Package template}
+
+astropy provides a template package that any Python package is welcome to
+use (many affiliated packages do so).  The template contains a ready-to-go
+package layout. It provides infrastructure such as documentation tools,
+testing framework and CI templates, configurations, Cython integration and
+documentation on how to make it all work.
+
+\subsection{Subset of affiliated packages}:
+
+\begin{itemize}
+\item astroplan: Observation planning and scheduling
+\item APLpy: Publication-quality image plotting
+\item astroML: Machine learning, statistics and data mining
+\item astroquery: Interface to many web services/archives
+\item ccdproc: CCD image reduction
+\item gammapy: Gamma-ray data analysis
+\item galpy: Galactic Dynamics
+\item halotools: Building galaxy-halo models \& analyzing dark matter halos
+\item ginga: FITS viewer GUI
+\item glue: Multidimensional data exploration
+\item photutils: Source detection and photometry
+\item reproject: Image reprojection/resampling
+\item sncosmo: Supernova cosmology analysis
+\item spectral-cube: Spectral cube data analysis
+\end{itemize}
+
+\section{References}
+\subsection{Services and packages we use}
+
+TODO: insert logos here.
+
+\subsection{Citing astropy}
+
+If you use astropy for work/research presented in a publication, we ask that
+you cite the Astropy Paper: Astropy: A community Python package for
+astronomy, Astropy Collaboration, A\&A, 2013
+
+We provide the following as a standard acknowledgment you can use if there
+is not a specific place to cite the paper: This research made use of
+Astropy, a community developed core Python package for Astronomy (Astropy
+Collaboration, 2013).
 
 \end{document}
